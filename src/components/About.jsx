@@ -45,8 +45,7 @@ export default function About() {
               key={module.id}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.02, backgroundColor: "rgba(31, 41, 55, 1)" }}
-              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className="p-5 rounded-xl bg-gray-900 border border-gray-800 shadow-sm"
             >
