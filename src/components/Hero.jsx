@@ -10,8 +10,8 @@ export default function Hero() {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, type: "spring" } }
+    hidden: { opacity: 0, y: 15 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   return (
@@ -19,38 +19,46 @@ export default function Hero() {
       variants={container} 
       initial="hidden" 
       animate="show" 
-      className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 max-w-5xl"
+      className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 py-12"
     >
-      <div className="flex-1">
-        <motion.div variants={item} className="mb-4 text-blue-400 font-mono text-sm tracking-wider">
-          HELLO, MY NAME IS
+      {/* Text Content */}
+      <div className="flex-1 space-y-6">
+        <motion.div variants={item} className="text-blue-500 font-mono text-xs tracking-[0.2em] uppercase">
+          SAP ABAP & Backend Specialist
         </motion.div>
-        <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
-          Andrei Vasilescu.
+        
+        <motion.h1 variants={item} className="text-5xl md:text-6xl font-extrabold text-white tracking-tight">
+          Andrei Vasilescu
         </motion.h1>
-        <motion.h2 variants={item} className="text-3xl md:text-4xl font-semibold mb-6 text-gray-300">
-          Mid-Level SAP ABAP Developer at Engie.
+        
+        <motion.h2 variants={item} className="text-2xl text-gray-400 font-light">
+          Mid-Level SAP ABAP Developer
         </motion.h2>
-        <motion.p variants={item} className="text-xl text-gray-400 leading-relaxed mb-8">
-          I specialize in full-lifecycle ABAP development, technical consultancy, and complex system integrations with third-party software like GIS, SCADA, and WEB. My expertise spans across SD, IDE, DM, EDM, WM, MM, BI, FI-CA, CS, and FSM modules.
+        
+        <motion.p variants={item} className="text-lg text-gray-500 leading-relaxed max-w-lg">
+          I build robust backend systems and complex integrations, transforming business logic into scalable SAP architecture. 
         </motion.p>
-        <motion.div variants={item} className="flex gap-4">
-          <a href="#experience" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full font-medium transition-colors">
-            View Experience
+        
+        <motion.div variants={item} className="pt-4">
+          <a 
+            href="#experience" 
+            className="inline-block border border-blue-600 text-blue-500 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-sm font-medium transition-all duration-300"
+          >
+            Check my Work
           </a>
         </motion.div>
       </div>
 
+      {/* Smaller, Elegant Profile Image */}
       <motion.div 
         variants={item} 
-        className="w-48 h-48 md:w-72 md:h-72 flex-shrink-0"
+        className="w-32 h-32 md:w-48 md:h-48 flex-shrink-0"
       >
-        <div className="w-full h-full rounded-full border-4 border-gray-800 overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-          {/* Ensure your image is in the 'public' folder and named exactly this: */}
+        <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
           <img 
             src="/profile.jpg" 
             alt="Andrei Vasilescu" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
           />
         </div>
       </motion.div>
