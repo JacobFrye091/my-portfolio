@@ -7,7 +7,7 @@ export default function Hero() {
           <img 
             src="/profile.jpg" 
             alt="Andrei Vasilescu" 
-            className="w-full h-full object-cover"
+            style={{ width: "150px", height: "150px", objectFit: "cover", borderRadius: "50%" }}
           />
         </div>
       </div>
