@@ -1,4 +1,6 @@
 ---
+import Background from '../components/Background.jsx';
+import Nav from '../components/Nav.jsx';
 import Hero from '../components/Hero.jsx';
 import About from '../components/About.jsx';
 import Experience from '../components/Experience.jsx';
@@ -10,10 +12,19 @@ import '../styles/global.css'; // Add this line!
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Andrei Vasilescu — Mid-Level SAP ABAP Developer specializing in backend systems and complex integrations." />
     <title>Andrei Cosmin Vasilescu | SAP ABAP Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-gray-950 min-h-screen text-gray-100 font-sans selection:bg-blue-500/30">
-    <main class="max-w-4xl mx-auto px-6 py-24 space-y-32">
+  <body class="bg-gray-950 min-h-screen text-gray-100 font-sans selection:bg-blue-500/30 noise">
+    <Background client:load />
+    <Nav client:load />
+    <main class="relative max-w-4xl mx-auto px-6 py-24 space-y-32">
       <Hero client:load />
       <About client:load />
       <Experience client:load />

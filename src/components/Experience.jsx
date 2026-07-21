@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const workExperience = [
   {
@@ -7,7 +8,8 @@ const workExperience = [
     period: "May 2026 - Present",
     type: "Full-time · Hybrid",
     description: "Promoted to handle complex, end-to-end software development, system integrations, and backend architecture redesigns. Transitioned from core maintenance tasks to driving advanced technical implementations and optimizing code performance across a broad landscape of SAP modules (SD, IDE, DM, EDM, WM, MM, BI, FI-CA, CS, FSM).",
-    tags: ["Backend Architecture", "Code Optimization", "Cross-Module Integration"]
+    tags: ["Backend Architecture", "Code Optimization", "Cross-Module Integration"],
+    current: true,
   },
   {
     role: "SAP ABAP Junior Developer",
@@ -78,60 +80,106 @@ const education = [
   }
 ];
 
+function TimelineItem({ item, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -24 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="relative pl-8"
+    >
+      {/* Node */}
+      <span className="absolute -left-[7px] top-2 flex items-center justify-center">
+        {item.current && (
+          <span className="absolute w-4 h-4 rounded-full bg-blue-500/40 animate-pulse-glow" />
+        )}
+        <span
+          className={`relative w-3 h-3 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.6)] ${
+            item.current ? 'bg-blue-400' : 'bg-blue-600'
+          }`}
+        />
+      </span>
+
+      <motion.div
+        whileHover={{ y: -3 }}
+        transition={{ duration: 0.25 }}
+        className="group rounded-xl glass border border-gray-800/80 hover:border-blue-500/40 hover:shadow-glow transition-all duration-300 p-5 sm:p-6"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2 gap-1">
+          <h3 className="text-xl font-semibold text-white font-display">{item.role}</h3>
+          <span className="flex items-center gap-2 text-blue-400 font-mono text-xs sm:text-sm">
+            {item.current && (
+              <span className="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 text-[10px] uppercase tracking-wider border border-blue-500/30">
+                Current
+              </span>
+            )}
+            {item.period}
+          </span>
+        </div>
+        <div className="text-gray-300 font-medium mb-3">
+          {item.company} <span className="text-gray-500 font-normal ml-2">| {item.type}</span>
+        </div>
+        <p className="text-gray-400 leading-relaxed mb-4">{item.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {item.tags.map((tag, tagIndex) => (
+            <span
+              key={tagIndex}
+              className="px-3 py-1 bg-gray-950/60 text-gray-300 text-xs rounded-full border border-gray-800 group-hover:border-blue-500/30 transition-colors duration-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Experience() {
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 75%', 'end 60%'],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
   return (
     <section id="experience" className="pt-12">
       {/* Work Experience Section */}
-      <h2 className="text-3xl font-bold mb-12 text-white">Experience</h2>
-      <div className="space-y-12 border-l border-gray-800 ml-3 mb-20">
-        {workExperience.map((item, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative pl-8"
-          >
-            <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
-            
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-              <h3 className="text-xl font-semibold text-white">{item.role}</h3>
-              <span className="text-blue-400 font-mono text-sm">{item.period}</span>
-            </div>
-            <div className="text-gray-300 font-medium mb-3">
-              {item.company} <span className="text-gray-500 font-normal ml-2">| {item.type}</span>
-            </div>
-            <p className="text-gray-400 leading-relaxed mb-4">{item.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {item.tags.map((tag, tagIndex) => (
-                <span key={tagIndex} className="px-3 py-1 bg-gray-900 text-gray-300 text-xs rounded-full border border-gray-800">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+      <h2 className="text-3xl font-bold mb-12 text-white font-display">Experience</h2>
+      <div ref={timelineRef} className="relative ml-3 mb-20">
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-800" />
+        <motion.div
+          className="absolute left-0 top-0 w-px bg-gradient-to-b from-blue-400 via-violet-400 to-cyan-400 shadow-glow"
+          style={{ height: lineHeight }}
+        />
+        <div className="space-y-12">
+          {workExperience.map((item, index) => (
+            <TimelineItem key={index} item={item} index={index} />
+          ))}
+        </div>
       </div>
 
       {/* Education Section */}
-      <h2 className="text-3xl font-bold mb-12 text-white">Education</h2>
+      <h2 className="text-3xl font-bold mb-12 text-white font-display">Education</h2>
       <div className="space-y-8">
         {education.map((item, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -3 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="p-6 rounded-xl bg-gray-900 border border-gray-800"
+            className="p-6 rounded-xl glass border border-gray-800/80 hover:border-blue-500/40 hover:shadow-glow transition-all duration-300"
           >
-            <h3 className="text-xl font-semibold text-white mb-1">{item.degree}</h3>
+            <h3 className="text-xl font-semibold text-white mb-1 font-display">{item.degree}</h3>
             <div className="text-blue-400 font-mono text-sm mb-4">
               {item.institution} <span className="text-gray-500 ml-2">| {item.period}</span>
             </div>
             <p className="text-gray-300 mb-6 italic">{item.description}</p>
-            
+
             <h4 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Key Coursework</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
               {item.topics.map((topic, i) => (
@@ -144,7 +192,7 @@ export default function Experience() {
 
             <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-800">
               {item.skills.map((skill, s) => (
-                <span key={s} className="px-3 py-1 bg-gray-950 text-blue-300 text-xs rounded border border-gray-800">
+                <span key={s} className="px-3 py-1 bg-gray-950/60 text-blue-300 text-xs rounded border border-gray-800">
                   {skill}
                 </span>
               ))}
