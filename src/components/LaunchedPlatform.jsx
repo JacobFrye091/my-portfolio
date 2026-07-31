@@ -3,20 +3,21 @@ import { motion, useMotionValue, useMotionTemplate, useTransform, useSpring } fr
 const projectsData = [
   {
     titleEn: "e-VAT Reconciliation, ANAF Pre-filled Return",
-    titleRo: "e-TVA Reconciliere, Decontul precompletat ANAF",
+    titleRo: "e-TVA Reconciliere, Decontul precompletat ANAF",
     company: "VML EXPERT ADVISOR SRL",
+    period: "2024 – Present",
     tasks: [
-        "Invoice-to-invoice reconciliation",
-        "Suggested values for D300",
-        "Flexible ANAF import",
-        "Jurnal de audit permanent",
-        "AES-256 encryption per company, passwords protected with Argon2id, separate accounts, granular permissions"
+      "Invoice-to-invoice reconciliation",
+      "Suggested values for D300",
+      "Flexible ANAF import",
+      "Jurnal de audit permanent",
+      "AES-256 encryption per company, passwords protected with Argon2id, separate accounts, granular permissions"
     ],
     skills: []
   }
 ];
 
-function LaunchedPlatform({ project, index }) {
+function LaunchedPlatformCard({ project, index }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 300, damping: 25 });
@@ -88,7 +89,7 @@ function LaunchedPlatform({ project, index }) {
   );
 }
 
-export default function LaunchedPlatform() {
+export default function Platform() {
   return (
     <section id="projects" className="pt-12">
       <motion.div
@@ -101,7 +102,7 @@ export default function LaunchedPlatform() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projectsData.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <LaunchedPlatformCard key={index} project={project} index={index} />
           ))}
         </div>
       </motion.div>
