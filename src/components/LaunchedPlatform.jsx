@@ -88,7 +88,7 @@ function LaunchedPlatform({ project, index }) {
   );
 }
 
-export default function Projects() {
+export default function LaunchedPlatform() {
   return (
     <section id="projects" className="pt-12">
       <motion.div
