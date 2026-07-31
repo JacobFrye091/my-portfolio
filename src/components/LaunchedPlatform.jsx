@@ -5,8 +5,9 @@ const projectsData = [
     titleEn: "e-VAT Reconciliation, ANAF Pre-filled Return",
     titleRo: "e-TVA Reconciliere, Decontul precompletat ANAF",
     company: "VML EXPERT ADVISOR SRL",
-    period: "2024 – Present",
+    period: "2026",
     tasks: [
+      "Link: https://www.ereconciliere.ro/",
       "Invoice-to-invoice reconciliation",
       "Suggested values for D300",
       "Flexible ANAF import",
