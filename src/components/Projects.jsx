@@ -6,7 +6,13 @@ const projectsData = [
     titleRo: "Proiect Implementare SAP FSM",
     period: "Dec 2025 – Present",
     company: "ENGIE Romania",
-    tasks: [],
+    tasks: [
+      "Core Data Services (CDS) Views",
+      "ABAP Managed Database Procedures (AMDP)",
+      "Clean Code Principles",
+      "Object-oriented Software",
+      "SAP S/4HANA"
+    ],
     skills: []
   },
   {

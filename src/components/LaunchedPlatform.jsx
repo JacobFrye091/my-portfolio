@@ -15,6 +15,23 @@ const projectsData = [
       "AES-256 encryption per company, passwords protected with Argon2id, separate accounts, granular permissions"
     ],
     skills: []
+  },
+  {
+    titleEn: "VML Consulting, Accounting, Taxation & Payroll Platform",
+    titleRo: "VML Consulting, Platforma de Contabilitate, Fiscalitate si Salarizare",
+    company: "VML EXPERT ADVISOR SRL",
+    period: "2026",
+    tasks: [
+      "Link: https://vml-consulting.com/",
+      "Two service lines, accounting & taxation and HR & payroll, taken separately or together",
+      "Bookkeeping under L 82/1991: statutory registers, monthly trial balance, fixed assets and depreciation, annual financial statements",
+      "Tax reporting: D300, D394, D101/D100, D406 (SAF-T), RO e-Factura, RO e-Transport",
+      "ANAF assistance and representation, expertiza contabila judiciara si extrajudiciara (OG 65/1994), infiintari si modificari de firma (L 265/2022)",
+      "Personnel administration: CIM, transmitere REGES, acte aditionale, dosar de personal, adeverinte",
+      "Payroll: state de plata si fluturasi, pontaj, retineri si popriri, OUG 158/2005 concedii medicale, D112",
+      "Labour law: consultanta L 53/2003, regulament intern, negociere si inregistrare CCM, asistenta la controale ITM"
+    ],
+    skills: []
   }
 ];
 
