@@ -17,9 +17,9 @@ const projectsData = [
     skills: []
   },
   {
-    titleEn: "VML Consulting, Accounting, Taxation & Payroll Platform",
-    titleRo: "VML Consulting, Platforma de Contabilitate, Fiscalitate si Salarizare",
-    company: "VML EXPERT ADVISOR SRL",
+    titleEn: "VML EXPERT CONSULTING, Accounting, Taxation & Payroll Platform",
+    titleRo: "VML EXPERT CONSULTING, Platforma de Contabilitate, Fiscalitate si Salarizare",
+    company: "VML EXPERT CONSULTING SRL",
     period: "2026",
     tasks: [
       "Link: https://vml-consulting.com/",
